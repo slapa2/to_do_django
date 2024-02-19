@@ -16,6 +16,9 @@
 </header>
 
 <main>
+    {% for item in qs %}
+        <p>{{ item.name }}</p>
+    {% endfor %}
 </main>
 
 <footer>
