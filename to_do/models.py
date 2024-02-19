@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+
+class Task(models.Model):
+    name = models.CharField(max_length=256)
+    created = models.DateTimeField(auto_created=True)
+    updated = models.DateTimeField(auto_now=True)
+    done = models.BooleanField(default=False)
