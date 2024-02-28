@@ -1,28 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My New Website</title>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+{% extends "base.html" %}
 
-</head>
-<body>
-<header>
-    <h1>Td Do</h1>
-    <nav>
-        <a href="/" class="current">Start</a>
-    </nav>
-</header>
+{% block title %}to do{% endblock %}
 
-<main>
+{% block content %}
     {% for item in qs %}
         <p>{{ item.name }}</p>
     {% endfor %}
-</main>
-
-<footer>
-    <p>©Sławomir Pawłowski 2024</p>
-</footer>
-</body>
-</html>
+{% endblock %}
