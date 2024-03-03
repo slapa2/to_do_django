@@ -3,7 +3,7 @@
 {% block title %}to do{% endblock %}
 
 {% block content %}
-    {% for item in qs %}
-        <p>{{ item.name }}</p>
+    {% for task in object_list %}
+        <p>{{ task.name }}</p>
     {% endfor %}
 {% endblock %}

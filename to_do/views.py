@@ -1,13 +1,8 @@
 from django.shortcuts import render
-from django.views import View
+from django.views.generic import ListView
 from .models import Task
 
 
-class Home(View):
+class TaskListView(ListView):
+    model = Task
 
-    def get(self, request):
-        qs = Task.objects.all()
-        context = {
-            'qs': qs,
-        }
-        return render(request, 'to_do/index.html', context)
