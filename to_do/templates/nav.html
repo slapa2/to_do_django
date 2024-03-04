@@ -1,3 +1,4 @@
 <nav>
-    <a href="/" class="current">Start</a>
+    <a href="{% url 'task-list' %}" {% if active == 'task-list' %} class="current" {% endif %}>Task list</a>
+    <a href="{% url 'task-add' %}" {% if active == 'task-add' %} class="current" {% endif %}>New task</a>
 </nav>

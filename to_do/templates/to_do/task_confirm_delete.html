@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}to do{% endblock %}
+
+{% block content %}
+    <p>{{ task.name }}</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <a class="button" href="{% url 'task-list' %}">Go back</a>
+        <button type="submit">Delete</button>
+    </form>
+{% endblock %}
+

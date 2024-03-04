@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}to do{% endblock %}
+
+{% block content %}
+    {% for task in task_list %}
+        <section>
+            <p>
+                {% if task.done %}Done: {% endif %}{{ task.name }}
+            </p>
+            <form method="post" action="{% url 'task-set-done' pk=task.pk %}">
+                {% csrf_token %}
+                <button type="submit">Set done</button>
+                <a class="button" href="{% url 'task-update' pk=task.pk %}">update</a>
+                <a class="button" href="{% url 'task-delete' pk=task.pk %}">delete</a>
+            </form>
+        </section>
+    {% endfor %}
+{% endblock %}

@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-
-{% block title %}to do{% endblock %}
-
-{% block content %}
-    {% for item in qs %}
-        <p>{{ item.name }}</p>
-    {% endfor %}
-{% endblock %}
