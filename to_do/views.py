@@ -45,5 +45,3 @@ class TaskSetDoneView(View):
             task.done = True
             task.save()
         return HttpResponseRedirect(reverse_lazy("task-list"))
-
-
