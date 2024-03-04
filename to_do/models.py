@@ -12,4 +12,4 @@ class Task(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('task-list-view')
+        return reverse('task-list')
