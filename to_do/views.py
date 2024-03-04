@@ -9,7 +9,7 @@ from .forms import SetDoneForm
 
 
 class TaskListView(ListView):
-    model = Task
+    queryset = Task.objects.order_by('done', '-updated')
     context_object_name = "task_list"
 
     def get_context_data(self, **kwargs):
