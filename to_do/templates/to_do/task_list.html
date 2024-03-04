@@ -3,13 +3,11 @@
 {% block title %}to do{% endblock %}
 
 {% block content %}
-    {% for task in object_list %}
+    {% for task in task_list %}
         <section>
             <p>
                 {% if task.done %}Done: {% endif %}{{ task.name }}
             </p>
-
-
             <form method="post" action="{% url 'task-set-done' pk=task.pk %}">
                 {% csrf_token %}
                 <button type="submit">Set done</button>

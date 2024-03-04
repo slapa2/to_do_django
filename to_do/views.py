@@ -10,6 +10,7 @@ from .forms import SetDoneForm
 
 class TaskListView(ListView):
     model = Task
+    context_object_name = "task_list"
 
     def get_context_data(self, **kwargs):
         context = super(TaskListView, self).get_context_data(**kwargs)
