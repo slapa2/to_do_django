@@ -15,7 +15,7 @@ class TaskListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(TaskListView, self).get_context_data(**kwargs)
         set_done_form = SetDoneForm()
-        context['set_done_form'] = set_done_form
+        context['active'] = 'task-list'
         return context
 
 
@@ -23,10 +23,20 @@ class TaskCreateView(CreateView):
     model = Task
     fields = ['name']
 
+    def get_context_data(self, **kwargs):
+        context = super(TaskCreateView, self).get_context_data(**kwargs)
+        context['active'] = 'task-add'
+        return context
+
 
 class TaskUpdateView(UpdateView):
     model = Task
     fields = ["name"]
+
+    def get_context_data(self, **kwargs):
+        context = super(TaskUpdateView, self).get_context_data(**kwargs)
+        context['active'] = 'task-list'
+        return context
 
 
 class TaskDeleteView(DeleteView):

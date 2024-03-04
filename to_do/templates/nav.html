@@ -1,4 +1,4 @@
 <nav>
-    <a href="{% url 'task-list' %}" class="current">Task list</a>
-    <a href="{% url 'task-add' %}" class="current">New task</a>
+    <a href="{% url 'task-list' %}" {% if active == 'task-list' %} class="current" {% endif %}>Task list</a>
+    <a href="{% url 'task-add' %}" {% if active == 'task-add' %} class="current" {% endif %}>New task</a>
 </nav>
