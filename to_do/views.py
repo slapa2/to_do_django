@@ -1,4 +1,5 @@
 from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -8,7 +9,7 @@ from .models import Task
 from .forms import SetDoneForm
 
 
-class TaskListView(ListView):
+class TaskListView(LoginRequiredMixin, ListView):
     queryset = Task.objects.order_by('done', '-updated')
     context_object_name = "task_list"
 
@@ -19,7 +20,7 @@ class TaskListView(ListView):
         return context
 
 
-class TaskCreateView(CreateView):
+class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     fields = ['name']
 
@@ -29,7 +30,7 @@ class TaskCreateView(CreateView):
         return context
 
 
-class TaskUpdateView(UpdateView):
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     fields = ["name"]
 
@@ -39,12 +40,12 @@ class TaskUpdateView(UpdateView):
         return context
 
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy("task-list")
 
 
-class TaskSetDoneView(View):
+class TaskSetDoneView(LoginRequiredMixin, View):
 
     form = SetDoneForm
 
