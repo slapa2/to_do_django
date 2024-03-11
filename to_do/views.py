@@ -18,7 +18,7 @@ class TaskListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(TaskListView, self).get_context_data(**kwargs)
         set_done_form = SetDoneForm()
-        context['active'] = 'task-list'
+        context['active'] = 'task_list'
         return context
 
 
@@ -32,7 +32,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(TaskCreateView, self).get_context_data(**kwargs)
-        context['active'] = 'task-add'
+        context['active'] = 'task_add'
         return context
 
 
@@ -44,12 +44,12 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(TaskUpdateView, self).get_context_data(**kwargs)
-        context['active'] = 'task-list'
+        context['active'] = 'task_list'
         return context
 
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
-    success_url = reverse_lazy("task-list")
+    success_url = reverse_lazy("task_list")
 
     def get_queryset(self):
         return Task.objects.filter(owner=self.request.user)
@@ -65,4 +65,4 @@ class TaskSetDoneView(LoginRequiredMixin, View):
             task = get_object_or_404(Task, pk=self.kwargs.get('pk'), owner=self.request.user)
             task.done = True
             task.save()
-        return HttpResponseRedirect(reverse_lazy("task-list"))
+        return HttpResponseRedirect(reverse_lazy("task_list"))

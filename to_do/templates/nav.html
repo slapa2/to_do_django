@@ -1,12 +1,14 @@
 <nav>
     {% if user.is_authenticated %}
     <form action="{% url 'logout' %}" method="post">
-        <a href="{% url 'task-list' %}" {% if active == 'task-list' %} class="current" {% endif %}>Task list</a>
-        <a href="{% url 'task-add' %}" {% if active == 'task-add' %} class="current" {% endif %}>New task</a>
+        <a href="{% url 'task_list' %}" {% if active == 'task_list' %} class="current" {% endif %}>Task list</a>
+        <a href="{% url 'task_add' %}" {% if active == 'task_add' %} class="current" {% endif %}>New task</a>
+        <a href="{% url 'profile' %}" {% if active == 'profile' %} class="current" {% endif %}>Profile</a>
             {% csrf_token %}
         <button type="submit">Log Out</button>
     </form>
     {% else %}
         <a href="{% url 'login' %}">Log In</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
     {% endif %}
 </nav>

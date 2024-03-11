@@ -8,11 +8,11 @@
             <p>
                 {% if task.done %}Done: {% endif %}{{ task.name }}
             </p>
-            <form method="post" action="{% url 'task-set-done' pk=task.pk %}">
+            <form method="post" action="{% url 'task_set_done' pk=task.pk %}">
                 {% csrf_token %}
                 <button type="submit">Set done</button>
-                <a class="button" href="{% url 'task-update' pk=task.pk %}">update</a>
-                <a class="button" href="{% url 'task-delete' pk=task.pk %}">delete</a>
+                <a class="button" href="{% url 'task_update' pk=task.pk %}">update</a>
+                <a class="button" href="{% url 'task_delete' pk=task.pk %}">delete</a>
             </form>
         </section>
     {% endfor %}
